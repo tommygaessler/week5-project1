@@ -30,11 +30,11 @@ h6 {
     -webkit-transform: rotate(2deg); /* Chrome, Safari, Opera */
     transform: rotate(2deg);
 }
-	
+
 .subheading {
     -ms-transform: rotate(-4deg); /* IE 9 */
     -webkit-transform: rotate(-4deg); /* Chrome, Safari, Opera */
-    transform: rotate(-4deg);	
+    transform: rotate(-4deg);
 }
 
 .btn {
@@ -88,7 +88,7 @@ footer {
 .page-heading .subheading {
 	display: inline-block !important;;
     background-color: #3b4d28;
-	padding: 10px 20px;	
+	padding: 10px 20px;
 }
 
 /* ----- Header Image ----- */
