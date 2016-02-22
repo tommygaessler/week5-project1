@@ -8,6 +8,37 @@ $(document).ready(function() {
   {name: "Jalapeno", status: "complete", price: ".15", quantity: 2}
   ];
 
+$(".btn-success").click(function(){
+	
+	var addItem = $("#addItem").val();
+  	var addPrice = $("#addPrice").val();
+  	var addQuan = $("#addQuantity").val();
+
+  	if (addItem == "" || addPrice == "" || addQuan == "")
+  	{
+  		alert("Enter all the items!");
+  	}
+
+  	else
+  	{
+  		groceries.unshift({name: addItem, price: addPrice, quantity: addQuan});
+  		update(groceries[0]);
+  	}
+
+  	displayTotal();
+});
+
+$('<div class="btn btn-danger">Remove Item</div>').insertAfter(".btn-success");
+
+$(".btn-danger").click(function(){
+
+	groceries.shift();
+	
+	console.log(groceries);
+	$('ul#list li:first-child').remove();
+	displayTotal();
+
+});
 
 // Before we start anything, string up the css file, this javascript file, and
 // the jQuery CDN to grocery.html file.
@@ -26,4 +57,28 @@ $(document).ready(function() {
 
 //4. Put a check in to make sure users aren't adding items without a name, price, or quatity.
 
+for (i=0; i<groceries.length; i++)
+{
+	var item = groceries[i];
+
+	$("ul#list").append("<li>" + item.name + " (" + item.quantity + ") " + " @ " + item.price + "</li>");
+
+	function update(item)
+	{
+		$("<li>" + item.name + " (" + item.quantity + ") " + " @ " + item.price + "</li>").insertBefore('ul#list li:first-child');
+	}
+}
+
+function displayTotal()
+{
+	var total = 0;
+
+	for (i=0; i<groceries.length; i++)
+	{
+		total += (groceries[i].quantity * groceries[i].price)
+	}
+	$(".totalCost h4 span").text("$" + total.toFixed(2));
+}
+
+displayTotal();
 });
